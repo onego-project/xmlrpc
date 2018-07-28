@@ -35,6 +35,8 @@ func toValue(arg interface{}) (valueizable, error) {
 	case reflect.Int16:
 		fallthrough
 	case reflect.Int32:
+		fallthrough
+	case reflect.Int64:
 		return newInt(v.Int()), nil
 	case reflect.Float32:
 		fallthrough

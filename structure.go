@@ -29,6 +29,8 @@ const enStruct = "struct"
 const enArray = "array"
 const enData = "data"
 
+const timeFormat  = "2006-01-02T15:04:05-0700"
+
 type payload struct {
 	*etree.Document
 }
@@ -100,7 +102,7 @@ func newDouble(data float64) *scalar {
 }
 
 func newDateTime(data time.Time) *scalar {
-	return newScalar(enDateTime, data.UTC().Format(time.RFC3339))
+	return newScalar(enDateTime, data.UTC().Format(timeFormat))
 }
 
 func newBase64(data []byte) *scalar {

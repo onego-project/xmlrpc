@@ -1,0 +1,21 @@
+language: go
+
+go:
+  - 1.9.x
+  - 1.10.x
+
+sudo: false
+
+before_install:
+  - go get -u github.com/golang/dep
+
+install:
+  - go get -t -v ./...
+  
+before_script:
+  - go get -u github.com/alecthomas/gometalinter
+  - gometalinter --install
+ 
+script:
+  - gometalinter
+  - go test

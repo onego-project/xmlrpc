@@ -157,7 +157,7 @@ func parseElement(e *etree.Element) (*Result, error) {
 		}
 		return &Result{resDouble: double, kind: KindDouble}, nil
 	case "dateTime.iso8601":
-		time, err := time.Parse(time.RFC3339, e.Text())
+		time, err := time.Parse(timeFormat, e.Text())
 		if err != nil {
 			return nil, errors.Wrapf(err, "cannot convert '%s' to a date", e.Text())
 		}

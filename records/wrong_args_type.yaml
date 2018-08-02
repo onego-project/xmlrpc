@@ -1,0 +1,40 @@
+---
+version: 1
+interactions:
+- request:
+    body: <?xml version="1.0" encoding="UTF-8"?><methodCall><methodName>pow</methodName><params><param><value><string>pizza</string></value></param><param><value><string>lasagne</string></value></param></params></methodCall>
+    form: {}
+    headers:
+      Content-Type:
+      - text/xml
+    url: http://127.0.0.1:8000/RPC2
+    method: POST
+  response:
+    body: |
+      <?xml version='1.0'?>
+      <methodResponse>
+      <fault>
+      <value><struct>
+      <member>
+      <name>faultCode</name>
+      <value><int>1</int></value>
+      </member>
+      <member>
+      <name>faultString</name>
+      <value><string>&lt;class 'TypeError'&gt;:unsupported operand type(s) for ** or pow(): 'str' and 'str'</string></value>
+      </member>
+      </struct></value>
+      </fault>
+      </methodResponse>
+    headers:
+      Content-Length:
+      - "341"
+      Content-Type:
+      - text/xml
+      Date:
+      - Wed, 25 Jul 2018 14:24:43 GMT
+      Server:
+      - BaseHTTP/0.6 Python/3.6.6
+    status: 200 OK
+    code: 200
+    duration: ""

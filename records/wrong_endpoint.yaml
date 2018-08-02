@@ -1,0 +1,25 @@
+---
+version: 1
+interactions:
+- request:
+    body: <?xml version="1.0" encoding="UTF-8"?><methodCall><methodName>pow</methodName><params><param><value><int>2</int></value></param><param><value><int>9</int></value></param></params></methodCall>
+    form: {}
+    headers:
+      Content-Type:
+      - text/xml
+    url: http://127.0.0.1:8000/qwerty
+    method: POST
+  response:
+    body: No such page
+    headers:
+      Content-Length:
+      - "12"
+      Content-Type:
+      - text/plain
+      Date:
+      - Wed, 25 Jul 2018 14:24:43 GMT
+      Server:
+      - BaseHTTP/0.6 Python/3.6.6
+    status: 404 Not Found
+    code: 404
+    duration: ""

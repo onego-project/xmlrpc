@@ -1,0 +1,27 @@
+---
+version: 1
+interactions:
+- request:
+    body: <?xml version="1.0" encoding="UTF-8"?><methodCall><methodName></methodName><params/></methodCall>
+    form: {}
+    headers:
+      Content-Type:
+      - text/xml
+    url: http://127.0.0.1:8000/file.xml
+    method: POST
+  response:
+    body: "<?xml version=\"1.0\"?>\n\n<methodResponse>\n\n   <params>\n\n      <param>\n\n\t
+      \     <value>\n<struct>\n  <member>\n\t  <name>xzs</name>\n\t  <value><int>3</int><int>4</int></value>\n
+      \ </member>\n  <member>\n    <name>xzs</name>\n    <value><i4>2</i4></value>\n
+      \ </member>\n</struct>\n\t      </value>\n\n         </param>\n\n      </params>\n\n
+      \  </methodResponse>\n"
+    headers:
+      Content-Type:
+      - text/xml
+      Date:
+      - Wed, 01 Aug 2018 20:10:41 GMT
+      Server:
+      - SimpleHTTP/0.6 Python/2.7.15
+    status: 200 OK
+    code: 200
+    duration: ""

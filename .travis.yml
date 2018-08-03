@@ -21,5 +21,6 @@ before_script:
   - gometalinter --install
  
 script:
+  - diff -u <(echo -n) <(gofmt -d -s $(go list ./... | grep -v /vendor/))
   - gometalinter
   - go test

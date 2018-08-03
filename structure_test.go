@@ -1,10 +1,10 @@
 package xmlrpc
 
 import (
-	"testing"
-	"context"
-	"time"
 	"bytes"
+	"context"
+	"testing"
+	"time"
 )
 
 const (
@@ -24,7 +24,7 @@ const (
 	argsKind       = "records/args_kind"
 )
 
-type food struct {}
+type food struct{}
 
 func Test_Call_args_int(t *testing.T) {
 	// test expects fail before connection to the server, no record needed
@@ -92,7 +92,7 @@ func Test_Call_args_time(t *testing.T) {
 	if err != nil {
 		t.Fatal("Unable to finish test", err)
 	}
-	res, err := MakeCallAndCreateRecord(context.TODO(), t, argsTime, endpointCorrect, "get",  time)
+	res, err := MakeCallAndCreateRecord(context.TODO(), t, argsTime, endpointCorrect, "get", time)
 	if err != nil {
 		t.Fatal("Error:", err)
 	}
@@ -102,7 +102,7 @@ func Test_Call_args_time(t *testing.T) {
 }
 
 func Test_Call_args_struct(t *testing.T) {
-	res, err := MakeCallAndCreateRecord(context.TODO(), t, argsStruct, endpointCorrect, "get",  food{})
+	res, err := MakeCallAndCreateRecord(context.TODO(), t, argsStruct, endpointCorrect, "get", food{})
 	if err == nil {
 		t.Fatal("No error when arg is struct different from time")
 	}
@@ -168,7 +168,7 @@ func Test_Call_args_arrayEmpty(t *testing.T) {
 func Test_Call_args_arrayNil(t *testing.T) {
 	// test expects fail before connection to the server, no record needed
 	array := []food{{}}
-	res, err := MakeCallAndCreateRecord(context.TODO(), t,"", endpointCorrect, "get", array)
+	res, err := MakeCallAndCreateRecord(context.TODO(), t, "", endpointCorrect, "get", array)
 	if err == nil {
 		t.Fatal("No error when array contains nil")
 	}
@@ -179,8 +179,8 @@ func Test_Call_args_arrayNil(t *testing.T) {
 
 func Test_Call_args_map(t *testing.T) {
 	foodValue := map[string]int64{
-		"donut" : 10,
-		"steak" : 100,
+		"donut": 10,
+		"steak": 100,
 	}
 	res, err := MakeCallAndCreateRecord(context.TODO(), t, argsMap, endpointCorrect, "get", foodValue)
 	if err != nil {
@@ -200,8 +200,8 @@ func Test_Call_args_map(t *testing.T) {
 func Test_Call_args_invalidMap(t *testing.T) {
 	// test expects fail before connection to the server, no record needed
 	foodValue := map[int64]int64{
-		5 : 10,
-		42 : 100,
+		5:  10,
+		42: 100,
 	}
 	res, err := MakeCallAndCreateRecord(context.TODO(), t, "", endpointCorrect, "get", foodValue)
 	if err == nil {
@@ -215,7 +215,7 @@ func Test_Call_args_invalidMap(t *testing.T) {
 func Test_Call_args_mapNil(t *testing.T) {
 	// test expects fail before connection to the server, no record needed
 	foodValue := map[string]food{
-		"ananas" : {},
+		"ananas": {},
 	}
 	res, err := MakeCallAndCreateRecord(context.TODO(), t, "", endpointCorrect, "get", foodValue)
 	if err == nil {
@@ -231,7 +231,7 @@ func Test_Call_args_kind(t *testing.T) {
 	if err != nil {
 		t.Fatal("Error:", err)
 	}
-	if res.Kind() !=KindInt {
+	if res.Kind() != KindInt {
 		t.Fatal("Method Call returns wrong result.")
 	}
 }

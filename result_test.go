@@ -1,25 +1,25 @@
 package xmlrpc
 
 import (
-	"testing"
 	"context"
+	"testing"
 )
 
 const endpointXML = "http://127.0.0.1:8000/file.xml"
 
 const (
-	wrongXMLFormat         = "records/wrong_xml_format"
-	wrongXMLResponse       = "records/wrong_xml_response"
-	wrongValueTag          = "records/wrong_value_tag"
-	parseErrorOnechildtag  = "records/parse_error_onechildtag"
-	parseErrorWrongtag     = "records/parse_error_wrongtag"
-	parseErrorInt          = "records/parse_error_int"
-	parseErrorDouble       = "records/parse_error_double"
-	parseErrorTime         = "records/parse_error_time"
-	parseErrorArray        = "records/parse_error_array"
-	parseErrorArrayElement = "records/parse_error_array_element"
-	parseErrorBoolean      = "records/parse_error_boolean"
-	parseErrorStructNoname = "records/parse_error_struct_noname"
+	wrongXMLFormat                  = "records/wrong_xml_format"
+	wrongXMLResponse                = "records/wrong_xml_response"
+	wrongValueTag                   = "records/wrong_value_tag"
+	parseErrorOnechildtag           = "records/parse_error_onechildtag"
+	parseErrorWrongtag              = "records/parse_error_wrongtag"
+	parseErrorInt                   = "records/parse_error_int"
+	parseErrorDouble                = "records/parse_error_double"
+	parseErrorTime                  = "records/parse_error_time"
+	parseErrorArray                 = "records/parse_error_array"
+	parseErrorArrayElement          = "records/parse_error_array_element"
+	parseErrorBoolean               = "records/parse_error_boolean"
+	parseErrorStructNoname          = "records/parse_error_struct_noname"
 	parseErrorStructNovalue         = "records/parse_error_struct_novalue"
 	parseErrorStructNomember        = "records/parse_error_struct_nomember"
 	parseErrorStructMultipleMembers = "records/parse_error_struct_multiple_members"
@@ -27,7 +27,7 @@ const (
 	parseErrorStructElement         = "records/parse_error_struct_element"
 	parseErrorBase64                = "records/parse_error_base64"
 
-	parseFaultError        = "records/parse_fault"
+	parseFaultError   = "records/parse_fault"
 	parseFaultName    = "records/parse_fault_name"
 	parseFaultMembers = "records/parse_fault_members"
 )

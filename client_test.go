@@ -4,8 +4,8 @@ import (
 	"testing"
 
 	"context"
-	"net/http"
 	"github.com/dnaeon/go-vcr/recorder"
+	"net/http"
 	"strings"
 )
 
@@ -29,7 +29,7 @@ func Test_NewClient(t *testing.T) {
 	}
 }
 
-func MakeCallAndCreateRecord(ctx context.Context, t *testing.T, recorderName string, endpoint string, methodName string, args ...interface{}) (*Result, error){
+func MakeCallAndCreateRecord(ctx context.Context, t *testing.T, recorderName string, endpoint string, methodName string, args ...interface{}) (*Result, error) {
 	// Start our recorder
 	r, err := recorder.New(recorderName)
 	if err != nil {
@@ -94,7 +94,7 @@ func Test_Call_preparePayload_wrongArgsType(t *testing.T) {
 }
 
 func Test_Call_preparePayload_wrongMethodName(t *testing.T) {
-	res, err := MakeCallAndCreateRecord(context.TODO(), t, wrongMethodName, endpointCorrect,  "pancake")
+	res, err := MakeCallAndCreateRecord(context.TODO(), t, wrongMethodName, endpointCorrect, "pancake")
 	if err == nil {
 		t.Error("No error when method name is wrong.")
 	}
@@ -107,7 +107,7 @@ func Test_Call_preparePayload_wrongMethodName(t *testing.T) {
 }
 
 func Test_Call_preparePayload_emptyMethodName(t *testing.T) {
-	res, err := MakeCallAndCreateRecord(context.TODO(), t, emptyMethodName, endpointCorrect,  "")
+	res, err := MakeCallAndCreateRecord(context.TODO(), t, emptyMethodName, endpointCorrect, "")
 	if err == nil {
 		t.Error("No error when method name is empty.")
 	}

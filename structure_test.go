@@ -2,7 +2,6 @@ package xmlrpc
 
 import (
 	"bytes"
-	"context"
 	"testing"
 	"time"
 )
@@ -28,7 +27,7 @@ type food struct{}
 
 func Test_Call_args_int(t *testing.T) {
 	// test expects fail before connection to the server, no record needed
-	res, err := MakeCallAndCreateRecord(context.TODO(), t, argsInt, endpointCorrect, "pow", 2, 9)
+	res, err := MakeCallAndCreateRecord(t, argsInt, endpointCorrect, "pow", 2, 9)
 	if err != nil {
 		t.Fatal("Error:", err)
 	}
@@ -38,7 +37,7 @@ func Test_Call_args_int(t *testing.T) {
 }
 
 func Test_Call_args_float(t *testing.T) {
-	res, err := MakeCallAndCreateRecord(context.TODO(), t, argsFloat, endpointCorrect, "div", float32(90.0), float32(8.0))
+	res, err := MakeCallAndCreateRecord(t, argsFloat, endpointCorrect, "div", float32(90.0), float32(8.0))
 	if err != nil {
 		t.Fatal("Error:", err)
 	}
@@ -48,7 +47,7 @@ func Test_Call_args_float(t *testing.T) {
 }
 
 func Test_Call_args_double(t *testing.T) {
-	res, err := MakeCallAndCreateRecord(context.TODO(), t, argsDouble, endpointCorrect, "div", 90.0, 8.0)
+	res, err := MakeCallAndCreateRecord(t, argsDouble, endpointCorrect, "div", 90.0, 8.0)
 	if err != nil {
 		t.Fatal("Error:", err)
 	}
@@ -58,7 +57,7 @@ func Test_Call_args_double(t *testing.T) {
 }
 
 func Test_Call_args_string(t *testing.T) {
-	res, err := MakeCallAndCreateRecord(context.TODO(), t, argsString, endpointCorrect, "poePoe", "pizza", "pancake")
+	res, err := MakeCallAndCreateRecord(t, argsString, endpointCorrect, "poePoe", "pizza", "pancake")
 	if err != nil {
 		t.Fatal("Error:", err)
 	}
@@ -68,7 +67,7 @@ func Test_Call_args_string(t *testing.T) {
 }
 
 func Test_Call_args_boolt(t *testing.T) {
-	res, err := MakeCallAndCreateRecord(context.TODO(), t, argsBoolt, endpointCorrect, "get", true)
+	res, err := MakeCallAndCreateRecord(t, argsBoolt, endpointCorrect, "get", true)
 	if err != nil {
 		t.Fatal("Error:", err)
 	}
@@ -78,7 +77,7 @@ func Test_Call_args_boolt(t *testing.T) {
 }
 
 func Test_Call_args_boolf(t *testing.T) {
-	res, err := MakeCallAndCreateRecord(context.TODO(), t, argsBoolf, endpointCorrect, "get", false)
+	res, err := MakeCallAndCreateRecord(t, argsBoolf, endpointCorrect, "get", false)
 	if err != nil {
 		t.Fatal("Error:", err)
 	}
@@ -92,7 +91,7 @@ func Test_Call_args_time(t *testing.T) {
 	if err != nil {
 		t.Fatal("Unable to finish test", err)
 	}
-	res, err := MakeCallAndCreateRecord(context.TODO(), t, argsTime, endpointCorrect, "get", time)
+	res, err := MakeCallAndCreateRecord(t, argsTime, endpointCorrect, "get", time)
 	if err != nil {
 		t.Fatal("Error:", err)
 	}
@@ -102,7 +101,7 @@ func Test_Call_args_time(t *testing.T) {
 }
 
 func Test_Call_args_struct(t *testing.T) {
-	res, err := MakeCallAndCreateRecord(context.TODO(), t, argsStruct, endpointCorrect, "get", food{})
+	res, err := MakeCallAndCreateRecord(t, argsStruct, endpointCorrect, "get", food{})
 	if err == nil {
 		t.Fatal("No error when arg is struct different from time")
 	}
@@ -113,7 +112,7 @@ func Test_Call_args_struct(t *testing.T) {
 
 func Test_Call_args_base64(t *testing.T) {
 	base := []byte("I love pancake.")
-	res, err := MakeCallAndCreateRecord(context.TODO(), t, argsBase64, endpointCorrect, "get", base)
+	res, err := MakeCallAndCreateRecord(t, argsBase64, endpointCorrect, "get", base)
 	if err != nil {
 		t.Fatal("Error:", err)
 	}
@@ -124,7 +123,7 @@ func Test_Call_args_base64(t *testing.T) {
 
 func Test_Call_args_slice(t *testing.T) {
 	array := []int64{1, 2, 3}
-	res, err := MakeCallAndCreateRecord(context.TODO(), t, argsSlice, endpointCorrect, "get", array)
+	res, err := MakeCallAndCreateRecord(t, argsSlice, endpointCorrect, "get", array)
 	if err != nil {
 		t.Fatal("Error:", err)
 	}
@@ -140,7 +139,7 @@ func Test_Call_args_slice(t *testing.T) {
 
 func Test_Call_args_array(t *testing.T) {
 	array := [3]int64{1, 2, 3}
-	res, err := MakeCallAndCreateRecord(context.TODO(), t, argsArray, endpointCorrect, "get", array)
+	res, err := MakeCallAndCreateRecord(t, argsArray, endpointCorrect, "get", array)
 	if err != nil {
 		t.Fatal("Error:", err)
 	}
@@ -156,7 +155,7 @@ func Test_Call_args_array(t *testing.T) {
 
 func Test_Call_args_arrayEmpty(t *testing.T) {
 	var array []int
-	res, err := MakeCallAndCreateRecord(context.TODO(), t, argsArrayEmpty, endpointCorrect, "get", array)
+	res, err := MakeCallAndCreateRecord(t, argsArrayEmpty, endpointCorrect, "get", array)
 	if err == nil {
 		t.Fatal("No error when array is empty")
 	}
@@ -168,7 +167,7 @@ func Test_Call_args_arrayEmpty(t *testing.T) {
 func Test_Call_args_arrayNil(t *testing.T) {
 	// test expects fail before connection to the server, no record needed
 	array := []food{{}}
-	res, err := MakeCallAndCreateRecord(context.TODO(), t, "", endpointCorrect, "get", array)
+	res, err := MakeCallAndCreateRecord(t, "", endpointCorrect, "get", array)
 	if err == nil {
 		t.Fatal("No error when array contains nil")
 	}
@@ -182,7 +181,7 @@ func Test_Call_args_map(t *testing.T) {
 		"donut": 10,
 		"steak": 100,
 	}
-	res, err := MakeCallAndCreateRecord(context.TODO(), t, argsMap, endpointCorrect, "get", foodValue)
+	res, err := MakeCallAndCreateRecord(t, argsMap, endpointCorrect, "get", foodValue)
 	if err != nil {
 		t.Fatal("Error:", err)
 	}
@@ -203,7 +202,7 @@ func Test_Call_args_invalidMap(t *testing.T) {
 		5:  10,
 		42: 100,
 	}
-	res, err := MakeCallAndCreateRecord(context.TODO(), t, "", endpointCorrect, "get", foodValue)
+	res, err := MakeCallAndCreateRecord(t, "", endpointCorrect, "get", foodValue)
 	if err == nil {
 		t.Fatal("No error when map hasn't key type string.")
 	}
@@ -217,7 +216,7 @@ func Test_Call_args_mapNil(t *testing.T) {
 	foodValue := map[string]food{
 		"ananas": {},
 	}
-	res, err := MakeCallAndCreateRecord(context.TODO(), t, "", endpointCorrect, "get", foodValue)
+	res, err := MakeCallAndCreateRecord(t, "", endpointCorrect, "get", foodValue)
 	if err == nil {
 		t.Fatal("No error when map's value is nil.")
 	}
@@ -227,7 +226,7 @@ func Test_Call_args_mapNil(t *testing.T) {
 }
 
 func Test_Call_args_kind(t *testing.T) {
-	res, err := MakeCallAndCreateRecord(context.TODO(), t, argsKind, endpointCorrect, "get", 5)
+	res, err := MakeCallAndCreateRecord(t, argsKind, endpointCorrect, "get", 5)
 	if err != nil {
 		t.Fatal("Error:", err)
 	}

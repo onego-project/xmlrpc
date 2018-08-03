@@ -29,7 +29,7 @@ func Test_NewClient(t *testing.T) {
 	}
 }
 
-func MakeCallAndCreateRecord(ctx context.Context, t *testing.T, recorderName string, endpoint string, methodName string, args ...interface{}) (*Result, error) {
+func MakeCallAndCreateRecord(t *testing.T, recorderName string, endpoint string, methodName string, args ...interface{}) (*Result, error) {
 	// Start our recorder
 	r, err := recorder.New(recorderName)
 	if err != nil {
@@ -50,12 +50,12 @@ func MakeCallAndCreateRecord(ctx context.Context, t *testing.T, recorderName str
 	client.client = cl
 
 	// Make call
-	return client.Call(ctx, methodName, args...)
+	return client.Call(context.TODO(), methodName, args...)
 }
 
 func Test_Call_preparePayload_nilArgs(t *testing.T) {
 	// test expects fail before connection to the server, no record needed
-	res, err := MakeCallAndCreateRecord(context.TODO(), t, "", endpointCorrect, "pow", nil)
+	res, err := MakeCallAndCreateRecord(t, "", endpointCorrect, "pow", nil)
 	if err == nil {
 		t.Fatal("No error when args contains nil.")
 	}
@@ -68,7 +68,7 @@ func Test_Call_preparePayload_nilArgs(t *testing.T) {
 }
 
 func Test_Call_preparePayload_missingArgs(t *testing.T) {
-	res, err := MakeCallAndCreateRecord(context.TODO(), t, missingArgs, endpointCorrect, "pow")
+	res, err := MakeCallAndCreateRecord(t, missingArgs, endpointCorrect, "pow")
 	if err == nil {
 		t.Error("No error when args are missing.")
 	}
@@ -81,7 +81,7 @@ func Test_Call_preparePayload_missingArgs(t *testing.T) {
 }
 
 func Test_Call_preparePayload_wrongArgsType(t *testing.T) {
-	res, err := MakeCallAndCreateRecord(context.TODO(), t, wrongArgsType, endpointCorrect, "pow", "pizza", "lasagne")
+	res, err := MakeCallAndCreateRecord(t, wrongArgsType, endpointCorrect, "pow", "pizza", "lasagne")
 	if err == nil {
 		t.Error("No error when args are missing.")
 	}
@@ -94,7 +94,7 @@ func Test_Call_preparePayload_wrongArgsType(t *testing.T) {
 }
 
 func Test_Call_preparePayload_wrongMethodName(t *testing.T) {
-	res, err := MakeCallAndCreateRecord(context.TODO(), t, wrongMethodName, endpointCorrect, "pancake")
+	res, err := MakeCallAndCreateRecord(t, wrongMethodName, endpointCorrect, "pancake")
 	if err == nil {
 		t.Error("No error when method name is wrong.")
 	}
@@ -107,7 +107,7 @@ func Test_Call_preparePayload_wrongMethodName(t *testing.T) {
 }
 
 func Test_Call_preparePayload_emptyMethodName(t *testing.T) {
-	res, err := MakeCallAndCreateRecord(context.TODO(), t, emptyMethodName, endpointCorrect, "")
+	res, err := MakeCallAndCreateRecord(t, emptyMethodName, endpointCorrect, "")
 	if err == nil {
 		t.Error("No error when method name is empty.")
 	}
@@ -120,7 +120,7 @@ func Test_Call_preparePayload_emptyMethodName(t *testing.T) {
 }
 
 func Test_Call_makeRequest_wrongEndpoint(t *testing.T) {
-	res, err := MakeCallAndCreateRecord(context.TODO(), t, wrongEndpoint, endpointWrong, "pow", 2, 9)
+	res, err := MakeCallAndCreateRecord(t, wrongEndpoint, endpointWrong, "pow", 2, 9)
 	if err == nil {
 		t.Fatal("No error when endpoint is wrong.")
 	}
@@ -134,7 +134,7 @@ func Test_Call_makeRequest_wrongEndpoint(t *testing.T) {
 
 func Test_Call_makeRequest_invalidEndpoint(t *testing.T) {
 	// test expects fail before connection to the server, no record needed
-	res, err := MakeCallAndCreateRecord(context.TODO(), t, "", endpointInvalid, "pow", 2, 9)
+	res, err := MakeCallAndCreateRecord(t, "", endpointInvalid, "pow", 2, 9)
 	if err == nil {
 		t.Fatal("No error when endpoint is invalid.")
 	}
@@ -148,7 +148,7 @@ func Test_Call_makeRequest_invalidEndpoint(t *testing.T) {
 
 func Test_Call_makeRequest_emptyEndpoint(t *testing.T) {
 	// test expects fail before connection to the server, no record needed
-	res, err := MakeCallAndCreateRecord(context.TODO(), t, "", endpointEmpty, "pow", 2, 9)
+	res, err := MakeCallAndCreateRecord(t, "", endpointEmpty, "pow", 2, 9)
 	if err == nil {
 		t.Fatal("No error when endpoint is empty.")
 	}

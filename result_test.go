@@ -1,7 +1,6 @@
 package xmlrpc
 
 import (
-	"context"
 	"testing"
 )
 
@@ -33,7 +32,7 @@ const (
 )
 
 func Test_wrongXMLFormat(t *testing.T) {
-	res, err := MakeCallAndCreateRecord(context.TODO(), t, wrongXMLFormat, endpointXML, "")
+	res, err := MakeCallAndCreateRecord(t, wrongXMLFormat, endpointXML, "")
 	if err == nil {
 		t.Fatal("No error when parse wrong XML response.")
 	}
@@ -43,7 +42,7 @@ func Test_wrongXMLFormat(t *testing.T) {
 }
 
 func Test_wrongXMLResponse(t *testing.T) {
-	res, err := MakeCallAndCreateRecord(context.TODO(), t, wrongXMLResponse, endpointXML, "")
+	res, err := MakeCallAndCreateRecord(t, wrongXMLResponse, endpointXML, "")
 	if err == nil {
 		t.Fatal("No error when parse wrong XML response.")
 	}
@@ -53,7 +52,7 @@ func Test_wrongXMLResponse(t *testing.T) {
 }
 
 func Test_wrongValueTag(t *testing.T) {
-	res, err := MakeCallAndCreateRecord(context.TODO(), t, wrongValueTag, endpointXML, "")
+	res, err := MakeCallAndCreateRecord(t, wrongValueTag, endpointXML, "")
 	if err == nil {
 		t.Fatal("No error when parse wrong XML response.")
 	}
@@ -63,7 +62,7 @@ func Test_wrongValueTag(t *testing.T) {
 }
 
 func Test_parseError_int(t *testing.T) {
-	res, err := MakeCallAndCreateRecord(context.TODO(), t, parseErrorInt, endpointXML, "")
+	res, err := MakeCallAndCreateRecord(t, parseErrorInt, endpointXML, "")
 	if err == nil {
 		t.Fatal("No error when parse wrong XML response.")
 	}
@@ -73,7 +72,7 @@ func Test_parseError_int(t *testing.T) {
 }
 
 func Test_parseError_double(t *testing.T) {
-	res, err := MakeCallAndCreateRecord(context.TODO(), t, parseErrorDouble, endpointXML, "")
+	res, err := MakeCallAndCreateRecord(t, parseErrorDouble, endpointXML, "")
 	if err == nil {
 		t.Fatal("No error when parse wrong XML response.")
 	}
@@ -83,7 +82,7 @@ func Test_parseError_double(t *testing.T) {
 }
 
 func Test_parseError_time(t *testing.T) {
-	res, err := MakeCallAndCreateRecord(context.TODO(), t, parseErrorTime, endpointXML, "")
+	res, err := MakeCallAndCreateRecord(t, parseErrorTime, endpointXML, "")
 	if err == nil {
 		t.Fatal("No error when parse wrong XML response.")
 	}
@@ -93,7 +92,7 @@ func Test_parseError_time(t *testing.T) {
 }
 
 func Test_parseError_array(t *testing.T) {
-	res, err := MakeCallAndCreateRecord(context.TODO(), t, parseErrorArray, endpointXML, "")
+	res, err := MakeCallAndCreateRecord(t, parseErrorArray, endpointXML, "")
 	if err == nil {
 		t.Fatal("No error when parse wrong XML response.")
 	}
@@ -103,7 +102,7 @@ func Test_parseError_array(t *testing.T) {
 }
 
 func Test_parseError_array_element(t *testing.T) {
-	res, err := MakeCallAndCreateRecord(context.TODO(), t, parseErrorArrayElement, endpointXML, "")
+	res, err := MakeCallAndCreateRecord(t, parseErrorArrayElement, endpointXML, "")
 	if err == nil {
 		t.Fatal("No error when parse wrong XML response.")
 	}
@@ -113,7 +112,7 @@ func Test_parseError_array_element(t *testing.T) {
 }
 
 func Test_parseError_base64(t *testing.T) {
-	res, err := MakeCallAndCreateRecord(context.TODO(), t, parseErrorBase64, endpointXML, "")
+	res, err := MakeCallAndCreateRecord(t, parseErrorBase64, endpointXML, "")
 	if err == nil {
 		t.Fatal("No error when parse wrong XML response.")
 	}
@@ -123,7 +122,7 @@ func Test_parseError_base64(t *testing.T) {
 }
 
 func Test_parseError_boolean(t *testing.T) {
-	res, err := MakeCallAndCreateRecord(context.TODO(), t, parseErrorBoolean, endpointXML, "")
+	res, err := MakeCallAndCreateRecord(t, parseErrorBoolean, endpointXML, "")
 	if err == nil {
 		t.Fatal("No error when parse wrong XML response.")
 	}
@@ -133,7 +132,7 @@ func Test_parseError_boolean(t *testing.T) {
 }
 
 func Test_parseError_oneChildTag(t *testing.T) {
-	res, err := MakeCallAndCreateRecord(context.TODO(), t, parseErrorOnechildtag, endpointXML, "")
+	res, err := MakeCallAndCreateRecord(t, parseErrorOnechildtag, endpointXML, "")
 	if err == nil {
 		t.Fatal("No error when parse wrong XML response.")
 	}
@@ -143,7 +142,7 @@ func Test_parseError_oneChildTag(t *testing.T) {
 }
 
 func Test_parseError_struct_noName(t *testing.T) {
-	res, err := MakeCallAndCreateRecord(context.TODO(), t, parseErrorStructNoname, endpointXML, "")
+	res, err := MakeCallAndCreateRecord(t, parseErrorStructNoname, endpointXML, "")
 	if err == nil {
 		t.Fatal("No error when parse wrong XML response.")
 	}
@@ -153,7 +152,7 @@ func Test_parseError_struct_noName(t *testing.T) {
 }
 
 func Test_parseError_struct_noValue(t *testing.T) {
-	res, err := MakeCallAndCreateRecord(context.TODO(), t, parseErrorStructNovalue, endpointXML, "")
+	res, err := MakeCallAndCreateRecord(t, parseErrorStructNovalue, endpointXML, "")
 	if err == nil {
 		t.Fatal("No error when parse wrong XML response.")
 	}
@@ -163,7 +162,7 @@ func Test_parseError_struct_noValue(t *testing.T) {
 }
 
 func Test_parseError_struct_noMember(t *testing.T) {
-	res, err := MakeCallAndCreateRecord(context.TODO(), t, parseErrorStructNomember, endpointXML, "")
+	res, err := MakeCallAndCreateRecord(t, parseErrorStructNomember, endpointXML, "")
 	if err == nil {
 		t.Fatal("No error when parse wrong XML response.")
 	}
@@ -173,7 +172,7 @@ func Test_parseError_struct_noMember(t *testing.T) {
 }
 
 func Test_parseError_struct_element(t *testing.T) {
-	res, err := MakeCallAndCreateRecord(context.TODO(), t, parseErrorStructElement, endpointXML, "")
+	res, err := MakeCallAndCreateRecord(t, parseErrorStructElement, endpointXML, "")
 	if err == nil {
 		t.Fatal("No error when parse wrong XML response.")
 	}
@@ -183,7 +182,7 @@ func Test_parseError_struct_element(t *testing.T) {
 }
 
 func Test_parseError_struct_multipleMembers(t *testing.T) {
-	res, err := MakeCallAndCreateRecord(context.TODO(), t, parseErrorStructMultipleMembers, endpointXML, "")
+	res, err := MakeCallAndCreateRecord(t, parseErrorStructMultipleMembers, endpointXML, "")
 	if err == nil {
 		t.Fatal("No error when parse wrong XML response.")
 	}
@@ -193,7 +192,7 @@ func Test_parseError_struct_multipleMembers(t *testing.T) {
 }
 
 func Test_parseError_struct_oneChildTag(t *testing.T) {
-	res, err := MakeCallAndCreateRecord(context.TODO(), t, parseErrorStructOnechildtag, endpointXML, "")
+	res, err := MakeCallAndCreateRecord(t, parseErrorStructOnechildtag, endpointXML, "")
 	if err == nil {
 		t.Fatal("No error when parse wrong XML response.")
 	}
@@ -203,7 +202,7 @@ func Test_parseError_struct_oneChildTag(t *testing.T) {
 }
 
 func Test_parseError_wrongTag(t *testing.T) {
-	res, err := MakeCallAndCreateRecord(context.TODO(), t, parseErrorWrongtag, endpointXML, "")
+	res, err := MakeCallAndCreateRecord(t, parseErrorWrongtag, endpointXML, "")
 	if err == nil {
 		t.Fatal("No error when parse wrong XML response.")
 	}
@@ -213,7 +212,7 @@ func Test_parseError_wrongTag(t *testing.T) {
 }
 
 func Test_parseFault(t *testing.T) {
-	res, err := MakeCallAndCreateRecord(context.TODO(), t, parseFaultError, endpointXML, "")
+	res, err := MakeCallAndCreateRecord(t, parseFaultError, endpointXML, "")
 	if err == nil {
 		t.Fatal("No error when parse wrong XML response.")
 	}
@@ -223,7 +222,7 @@ func Test_parseFault(t *testing.T) {
 }
 
 func Test_parseFault_nameNil(t *testing.T) {
-	res, err := MakeCallAndCreateRecord(context.TODO(), t, parseFaultName, endpointXML, "")
+	res, err := MakeCallAndCreateRecord(t, parseFaultName, endpointXML, "")
 	if err == nil {
 		t.Fatal("No error when parse wrong XML response.")
 	}
@@ -233,7 +232,7 @@ func Test_parseFault_nameNil(t *testing.T) {
 }
 
 func Test_parseFault_members(t *testing.T) {
-	res, err := MakeCallAndCreateRecord(context.TODO(), t, parseFaultMembers, endpointXML, "")
+	res, err := MakeCallAndCreateRecord(t, parseFaultMembers, endpointXML, "")
 	if err == nil {
 		t.Fatal("No error when parse wrong XML response.")
 	}

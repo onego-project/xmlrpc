@@ -27,7 +27,6 @@ const (
 type food struct{}
 
 func Test_Call_args_int(t *testing.T) {
-	// test expects fail before connection to the server, no record needed
 	res, err := MakeCallAndCreateRecord(t, argsInt, endpointCorrect, "pow", 2, 9)
 	if err != nil {
 		t.Fatal("Error:", err)

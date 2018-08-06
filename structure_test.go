@@ -2,6 +2,7 @@ package xmlrpc
 
 import (
 	"bytes"
+	"strings"
 	"testing"
 	"time"
 )
@@ -159,6 +160,9 @@ func Test_Call_args_arrayEmpty(t *testing.T) {
 	if err == nil {
 		t.Fatal("No error when array is empty")
 	}
+	if !strings.Contains(err.Error(), "cannot parse XML RPC response") {
+		t.Fatal("Unexpected error:", err)
+	}
 	if res != nil {
 		t.Fatal("Method Call returns result when array is empty.")
 	}
@@ -170,6 +174,9 @@ func Test_Call_args_arrayNil(t *testing.T) {
 	res, err := MakeCallAndCreateRecord(t, "", endpointCorrect, "get", array)
 	if err == nil {
 		t.Fatal("No error when array contains nil")
+	}
+	if !strings.Contains(err.Error(), "payload preparation failed") {
+		t.Fatal("Unexpected error:", err)
 	}
 	if res != nil {
 		t.Fatal("Method Call returns result when array contains nil.")
@@ -206,6 +213,9 @@ func Test_Call_args_invalidMap(t *testing.T) {
 	if err == nil {
 		t.Fatal("No error when map hasn't key type string.")
 	}
+	if !strings.Contains(err.Error(), "payload preparation failed") {
+		t.Fatal("Unexpected error:", err)
+	}
 	if res != nil {
 		t.Fatal("Method Call returns result when map hasn't key type string.")
 	}
@@ -219,6 +229,9 @@ func Test_Call_args_mapNil(t *testing.T) {
 	res, err := MakeCallAndCreateRecord(t, "", endpointCorrect, "get", foodValue)
 	if err == nil {
 		t.Fatal("No error when map's value is nil.")
+	}
+	if !strings.Contains(err.Error(), "payload preparation failed") {
+		t.Fatal("Unexpected error:", err)
 	}
 	if res != nil {
 		t.Fatal("Method Call returns result when map's value is nil.")

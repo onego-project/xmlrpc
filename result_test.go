@@ -1,6 +1,7 @@
 package xmlrpc
 
 import (
+	"strings"
 	"testing"
 )
 
@@ -36,6 +37,9 @@ func Test_wrongXMLFormat(t *testing.T) {
 	if err == nil {
 		t.Fatal("No error when parse wrong XML response.")
 	}
+	if !strings.Contains(err.Error(), "cannot parse XML RPC response") {
+		t.Fatal("Unexpected error:", err)
+	}
 	if res != nil {
 		t.Fatal("Method Call returns result when parse wrong XML response.")
 	}
@@ -45,6 +49,9 @@ func Test_wrongXMLResponse(t *testing.T) {
 	res, err := MakeCallAndCreateRecord(t, wrongXMLResponse, endpointXML, "")
 	if err == nil {
 		t.Fatal("No error when parse wrong XML response.")
+	}
+	if !strings.Contains(err.Error(), "cannot parse XML RPC response") {
+		t.Fatal("Unexpected error:", err)
 	}
 	if res != nil {
 		t.Fatal("Method Call returns result when parse wrong XML response.")
@@ -56,6 +63,9 @@ func Test_wrongValueTag(t *testing.T) {
 	if err == nil {
 		t.Fatal("No error when parse wrong XML response.")
 	}
+	if !strings.Contains(err.Error(), "cannot parse XML RPC response") {
+		t.Fatal("Unexpected error:", err)
+	}
 	if res != nil {
 		t.Fatal("Method Call returns result when parse wrong XML response.")
 	}
@@ -65,6 +75,9 @@ func Test_parseError_int(t *testing.T) {
 	res, err := MakeCallAndCreateRecord(t, parseErrorInt, endpointXML, "")
 	if err == nil {
 		t.Fatal("No error when parse wrong XML response.")
+	}
+	if !strings.Contains(err.Error(), "cannot parse XML RPC response") {
+		t.Fatal("Unexpected error:", err)
 	}
 	if res != nil {
 		t.Fatal("Method Call returns result when parse wrong XML response.")
@@ -76,6 +89,9 @@ func Test_parseError_double(t *testing.T) {
 	if err == nil {
 		t.Fatal("No error when parse wrong XML response.")
 	}
+	if !strings.Contains(err.Error(), "cannot parse XML RPC response") {
+		t.Fatal("Unexpected error:", err)
+	}
 	if res != nil {
 		t.Fatal("Method Call returns result when parse wrong XML response.")
 	}
@@ -85,6 +101,9 @@ func Test_parseError_time(t *testing.T) {
 	res, err := MakeCallAndCreateRecord(t, parseErrorTime, endpointXML, "")
 	if err == nil {
 		t.Fatal("No error when parse wrong XML response.")
+	}
+	if !strings.Contains(err.Error(), "cannot parse XML RPC response") {
+		t.Fatal("Unexpected error:", err)
 	}
 	if res != nil {
 		t.Fatal("Method Call returns result when parse wrong XML response.")
@@ -96,6 +115,9 @@ func Test_parseError_array(t *testing.T) {
 	if err == nil {
 		t.Fatal("No error when parse wrong XML response.")
 	}
+	if !strings.Contains(err.Error(), "cannot parse XML RPC response") {
+		t.Fatal("Unexpected error:", err)
+	}
 	if res != nil {
 		t.Fatal("Method Call returns result when parse wrong XML response.")
 	}
@@ -105,6 +127,9 @@ func Test_parseError_array_element(t *testing.T) {
 	res, err := MakeCallAndCreateRecord(t, parseErrorArrayElement, endpointXML, "")
 	if err == nil {
 		t.Fatal("No error when parse wrong XML response.")
+	}
+	if !strings.Contains(err.Error(), "cannot parse XML RPC response") {
+		t.Fatal("Unexpected error:", err)
 	}
 	if res != nil {
 		t.Fatal("Method Call returns result when parse wrong XML response.")
@@ -116,6 +141,9 @@ func Test_parseError_base64(t *testing.T) {
 	if err == nil {
 		t.Fatal("No error when parse wrong XML response.")
 	}
+	if !strings.Contains(err.Error(), "cannot parse XML RPC response") {
+		t.Fatal("Unexpected error:", err)
+	}
 	if res != nil {
 		t.Fatal("Method Call returns result when parse wrong XML response.")
 	}
@@ -125,6 +153,9 @@ func Test_parseError_boolean(t *testing.T) {
 	res, err := MakeCallAndCreateRecord(t, parseErrorBoolean, endpointXML, "")
 	if err == nil {
 		t.Fatal("No error when parse wrong XML response.")
+	}
+	if !strings.Contains(err.Error(), "cannot parse XML RPC response") {
+		t.Fatal("Unexpected error:", err)
 	}
 	if res != nil {
 		t.Fatal("Method Call returns result when parse wrong XML response.")
@@ -136,6 +167,9 @@ func Test_parseError_oneChildTag(t *testing.T) {
 	if err == nil {
 		t.Fatal("No error when parse wrong XML response.")
 	}
+	if !strings.Contains(err.Error(), "cannot parse XML RPC response") {
+		t.Fatal("Unexpected error:", err)
+	}
 	if res != nil {
 		t.Fatal("Method Call returns result when parse wrong XML response.")
 	}
@@ -145,6 +179,9 @@ func Test_parseError_struct_noName(t *testing.T) {
 	res, err := MakeCallAndCreateRecord(t, parseErrorStructNoname, endpointXML, "")
 	if err == nil {
 		t.Fatal("No error when parse wrong XML response.")
+	}
+	if !strings.Contains(err.Error(), "cannot parse XML RPC response") {
+		t.Fatal("Unexpected error:", err)
 	}
 	if res != nil {
 		t.Fatal("Method Call returns result when parse wrong XML response.")
@@ -156,6 +193,9 @@ func Test_parseError_struct_noValue(t *testing.T) {
 	if err == nil {
 		t.Fatal("No error when parse wrong XML response.")
 	}
+	if !strings.Contains(err.Error(), "cannot parse XML RPC response") {
+		t.Fatal("Unexpected error:", err)
+	}
 	if res != nil {
 		t.Fatal("Method Call returns result when parse wrong XML response.")
 	}
@@ -165,6 +205,9 @@ func Test_parseError_struct_noMember(t *testing.T) {
 	res, err := MakeCallAndCreateRecord(t, parseErrorStructNomember, endpointXML, "")
 	if err == nil {
 		t.Fatal("No error when parse wrong XML response.")
+	}
+	if !strings.Contains(err.Error(), "cannot parse XML RPC response") {
+		t.Fatal("Unexpected error:", err)
 	}
 	if res != nil {
 		t.Fatal("Method Call returns result when parse wrong XML response.")
@@ -176,6 +219,9 @@ func Test_parseError_struct_element(t *testing.T) {
 	if err == nil {
 		t.Fatal("No error when parse wrong XML response.")
 	}
+	if !strings.Contains(err.Error(), "cannot parse XML RPC response") {
+		t.Fatal("Unexpected error:", err)
+	}
 	if res != nil {
 		t.Fatal("Method Call returns result when parse wrong XML response.")
 	}
@@ -185,6 +231,9 @@ func Test_parseError_struct_multipleMembers(t *testing.T) {
 	res, err := MakeCallAndCreateRecord(t, parseErrorStructMultipleMembers, endpointXML, "")
 	if err == nil {
 		t.Fatal("No error when parse wrong XML response.")
+	}
+	if !strings.Contains(err.Error(), "cannot parse XML RPC response") {
+		t.Fatal("Unexpected error:", err)
 	}
 	if res != nil {
 		t.Fatal("Method Call returns result when parse wrong XML response.")
@@ -196,6 +245,9 @@ func Test_parseError_struct_oneChildTag(t *testing.T) {
 	if err == nil {
 		t.Fatal("No error when parse wrong XML response.")
 	}
+	if !strings.Contains(err.Error(), "cannot parse XML RPC response") {
+		t.Fatal("Unexpected error:", err)
+	}
 	if res != nil {
 		t.Fatal("Method Call returns result when parse wrong XML response.")
 	}
@@ -205,6 +257,9 @@ func Test_parseError_wrongTag(t *testing.T) {
 	res, err := MakeCallAndCreateRecord(t, parseErrorWrongtag, endpointXML, "")
 	if err == nil {
 		t.Fatal("No error when parse wrong XML response.")
+	}
+	if !strings.Contains(err.Error(), "cannot parse XML RPC response") {
+		t.Fatal("Unexpected error:", err)
 	}
 	if res != nil {
 		t.Fatal("Method Call returns result when parse wrong XML response.")
@@ -216,6 +271,9 @@ func Test_parseFault(t *testing.T) {
 	if err == nil {
 		t.Fatal("No error when parse wrong XML response.")
 	}
+	if !strings.Contains(err.Error(), "cannot parse XML RPC response") {
+		t.Fatal("Unexpected error:", err)
+	}
 	if res != nil {
 		t.Fatal("Method Call returns result when parse wrong XML response.")
 	}
@@ -226,6 +284,9 @@ func Test_parseFault_nameNil(t *testing.T) {
 	if err == nil {
 		t.Fatal("No error when parse wrong XML response.")
 	}
+	if !strings.Contains(err.Error(), "cannot parse XML RPC response") {
+		t.Fatal("Unexpected error:", err)
+	}
 	if res != nil {
 		t.Fatal("Method Call returns result when parse wrong XML response.")
 	}
@@ -235,6 +296,9 @@ func Test_parseFault_members(t *testing.T) {
 	res, err := MakeCallAndCreateRecord(t, parseFaultMembers, endpointXML, "")
 	if err == nil {
 		t.Fatal("No error when parse wrong XML response.")
+	}
+	if !strings.Contains(err.Error(), "cannot parse XML RPC response") {
+		t.Fatal("Unexpected error:", err)
 	}
 	if res != nil {
 		t.Fatal("Method Call returns result when parse wrong XML response.")

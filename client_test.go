@@ -72,7 +72,7 @@ func Test_Call_preparePayload_missingArgs(t *testing.T) {
 	if err == nil {
 		t.Error("No error when args are missing.")
 	}
-	if !strings.Contains(err.Error(), "pow expected at least 2 arguments") {
+	if !strings.Contains(err.Error(), "cannot parse XML RPC response") {
 		t.Fatal("Unexpected error:", err)
 	}
 	if res != nil {
@@ -85,7 +85,7 @@ func Test_Call_preparePayload_wrongArgsType(t *testing.T) {
 	if err == nil {
 		t.Error("No error when args are missing.")
 	}
-	if !strings.Contains(err.Error(), "unsupported operand type") {
+	if !strings.Contains(err.Error(), "cannot parse XML RPC response") {
 		t.Fatal("Unexpected error:", err)
 	}
 	if res != nil {
@@ -98,7 +98,7 @@ func Test_Call_preparePayload_wrongMethodName(t *testing.T) {
 	if err == nil {
 		t.Error("No error when method name is wrong.")
 	}
-	if !strings.Contains(err.Error(), "method \"pancake\" is not supported") {
+	if !strings.Contains(err.Error(), "cannot parse XML RPC response") {
 		t.Fatal("Unexpected error:", err)
 	}
 	if res != nil {
@@ -111,7 +111,7 @@ func Test_Call_preparePayload_emptyMethodName(t *testing.T) {
 	if err == nil {
 		t.Error("No error when method name is empty.")
 	}
-	if !strings.Contains(err.Error(), "method \"\" is not supported") {
+	if !strings.Contains(err.Error(), "cannot parse XML RPC response") {
 		t.Fatal("Unexpected error:", err)
 	}
 	if res != nil {
@@ -124,7 +124,7 @@ func Test_Call_makeRequest_wrongEndpoint(t *testing.T) {
 	if err == nil {
 		t.Fatal("No error when endpoint is wrong.")
 	}
-	if !strings.Contains(err.Error(), "code 404") {
+	if !strings.Contains(err.Error(), "request failed") {
 		t.Fatal("Unexpected error:", err)
 	}
 	if res != nil {
@@ -138,7 +138,7 @@ func Test_Call_makeRequest_invalidEndpoint(t *testing.T) {
 	if err == nil {
 		t.Fatal("No error when endpoint is invalid.")
 	}
-	if !strings.Contains(err.Error(), "request preparation failed") {
+	if !strings.Contains(err.Error(), "request failed") {
 		t.Fatal("Unexpected error:", err)
 	}
 	if res != nil {
@@ -152,7 +152,7 @@ func Test_Call_makeRequest_emptyEndpoint(t *testing.T) {
 	if err == nil {
 		t.Fatal("No error when endpoint is empty.")
 	}
-	if !strings.Contains(err.Error(), "unsupported protocol scheme") {
+	if !strings.Contains(err.Error(), "request failed") {
 		t.Fatal("Unexpected error:", err)
 	}
 	if res != nil {

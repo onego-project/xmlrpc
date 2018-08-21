@@ -19,8 +19,8 @@ type Client struct {
 }
 
 // NewClient is an XML-RPC client constructor
-func NewClient(endpoint string) *Client {
-	return &Client{&http.Client{}, endpoint}
+func NewClient(endpoint string, client *http.Client) *Client {
+	return &Client{client, endpoint}
 }
 
 func toValue(arg interface{}) (valueizable, error) {

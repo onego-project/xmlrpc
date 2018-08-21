@@ -23,7 +23,7 @@ const (
 )
 
 func Test_NewClient(t *testing.T) {
-	client := NewClient(endpointEmpty)
+	client := NewClient(endpointEmpty, &http.Client{})
 	if client == nil {
 		t.Error("Wrong NewClient method, client is nil.")
 	}
@@ -43,11 +43,10 @@ func MakeCallAndCreateRecord(t *testing.T, recorderName string, endpoint string,
 	}
 
 	// Create XML-RPC client and set HTTP client
-	client := NewClient(endpoint)
+	client := NewClient(endpoint, cl)
 	if client == nil {
 		t.Fatal("Unable to create xml-rpc client.")
 	}
-	client.client = cl
 
 	// Make call
 	return client.Call(context.TODO(), methodName, args...)

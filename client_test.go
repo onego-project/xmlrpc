@@ -4,9 +4,10 @@ import (
 	"testing"
 
 	"context"
-	"github.com/dnaeon/go-vcr/recorder"
 	"net/http"
 	"strings"
+
+	"github.com/dnaeon/go-vcr/recorder"
 )
 
 const (
@@ -29,7 +30,8 @@ func Test_NewClient(t *testing.T) {
 	}
 }
 
-func MakeCallAndCreateRecord(t *testing.T, recorderName string, endpoint string, methodName string, args ...interface{}) (*Result, error) {
+func MakeCallAndCreateRecord(t *testing.T, recorderName string, endpoint string, methodName string,
+	args ...interface{}) (*Result, error) {
 	// Start our recorder
 	r, err := recorder.New(recorderName)
 	if err != nil {

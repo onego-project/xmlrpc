@@ -1,2 +1,3 @@
 .virtualgo
 tests/main.go
+vendor/

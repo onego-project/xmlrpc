@@ -2,20 +2,47 @@
 
 
 [[projects]]
+  digest = "1:86849cd97161572bcdb705e0f6b986d0a250faa6b64c52f8a2a27199d0e16dee"
   name = "github.com/beevik/etree"
   packages = ["."]
+  pruneopts = "UT"
   revision = "15a30b44cfd6c5a16a7ddfe271bf146aaf2d3195"
   version = "v1.0.0"
 
 [[projects]]
+  branch = "master"
+  digest = "1:cd503d36a578b331bf585e3bb97dac8333188a74f773406ebb48c7bff9b270ed"
+  name = "github.com/dnaeon/go-vcr"
+  packages = [
+    "cassette",
+    "recorder",
+  ]
+  pruneopts = "UT"
+  revision = "5637cf3d8a31b20882d79bd0e53a186d3821b155"
+
+[[projects]]
+  digest = "1:40e195917a951a8bf867cd05de2a46aaf1806c50cf92eebf4c16f78cd196f747"
   name = "github.com/pkg/errors"
   packages = ["."]
+  pruneopts = "UT"
   revision = "645ef00459ed84a119197bfb8d8205042c6df63d"
   version = "v0.8.0"
+
+[[projects]]
+  digest = "1:342378ac4dcb378a5448dd723f0784ae519383532f5e70ade24132c4c8693202"
+  name = "gopkg.in/yaml.v2"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "5420a8b6744d3b0345ab293f6fcba19c978f1183"
+  version = "v2.2.1"
 
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "4fde29a69f3ccdcca4c1852b5c58e6f4391d0c39422d74b88fcaefbd8fe8329b"
+  input-imports = [
+    "github.com/beevik/etree",
+    "github.com/dnaeon/go-vcr/recorder",
+    "github.com/pkg/errors",
+  ]
   solver-name = "gps-cdcl"
   solver-version = 1
